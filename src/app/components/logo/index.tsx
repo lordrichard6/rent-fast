@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components'
 import tw from 'twin.macro'
 
-import SnailLogo from '../../../assets/images/logo.png'
+import SnailLogoDarkImg from '../../../assets/images/logo.png'
+import SnailLogoImg from '../../../assets/images/logo-white.png'
+
+interface ILogoProps {
+    color?: "white" | "dark";
+    bgColor?: "white" | "dark";
+}
 
 const LogoContainer = styled.div`
     ${tw`
@@ -19,7 +25,8 @@ const LogoText = styled.div`
         text-black
         m-1
     `}
-`;
+    ${({color}: any) => (color === 'white' ? tw`text-white` : tw`text-black`)}
+` as any;
 
 const Image = styled.div`
     width: auto;
@@ -34,13 +41,15 @@ const Image = styled.div`
     }
 `;
 
-export function Logo() {
+export function Logo(props: ILogoProps) {
+    const { color, bgColor } = props;
+
     return (
         <LogoContainer>
             <Image>
-                <img src={SnailLogo} alt="logo" />
+                <img src={bgColor === 'dark' ? SnailLogoDarkImg : SnailLogoImg} alt="logo" />
             </Image>
-            <LogoText>FastRent.</LogoText>
+            <LogoText color={color || 'dark'}>FastRent.</LogoText>
         </LogoContainer>
     )
 } 
