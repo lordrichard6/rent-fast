@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import tw from 'twin.macro'
 
@@ -6,6 +6,10 @@ import { faCalendarAlt, faCaretDown, faCaretUp } from '@fortawesome/free-solid-s
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from '../button'
 import { Marginer } from '../marginer'
+
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
+import { SCREENS } from '../responsive'
 
 const CardContainer = styled.div`
     min-height: 4.3em;
@@ -72,29 +76,63 @@ const LineSeparator = styled.span`
     `}
 `
 
-const DateCalendar = styled.div``
+const DateCalendar = styled(Calendar)`
+    position: absolute;
+    max-width: none;
+    user-select: none;
+    top:2em;
+    left:0;
+
+    ${({offset}: any) =>
+        offset &&
+        css`
+            left: -6em;
+        `};
+
+        @media (min-width: ${SCREENS.md}) {
+            top: 3.5em;
+            left: -2em;
+        }
+` as any;
 
 export function BookCard() {
+    const [startDate, setStartDate] = useState<Date>(new Date());
+    const [isStartCalendarOpen, setStartCalendarOpen] = useState(false);
+    const [returnDate, setReturnDate] = useState<Date>(new Date());
+    const [isReturnCalendarOpen, setReturnCalendarOpen] = useState(false);
+
+    const toggleStartDateCalendar = () => {
+        setStartCalendarOpen(!isStartCalendarOpen);
+        if (isReturnCalendarOpen) setReturnCalendarOpen(false)
+    }
+
+    const toggleReturnDateCalendar = () => {
+        setReturnCalendarOpen(!isReturnCalendarOpen);
+        if (isStartCalendarOpen) setStartCalendarOpen(false)
+    }
+
     return (
         <CardContainer>
             <ItemContainer>
                 <Icon>
                     <FontAwesomeIcon icon={faCalendarAlt} />
                 </Icon>
-                <Name>Pick up Date</Name>
+                <Name onClick={toggleStartDateCalendar}>Pick up Date</Name>
                 <SmallIcon>
-                    <FontAwesomeIcon icon={faCaretDown} />
+                    <FontAwesomeIcon icon={isStartCalendarOpen ? faCaretUp : faCaretDown} />
                 </SmallIcon>
+                {isStartCalendarOpen && <DateCalendar value={startDate} onChange={setStartDate as any} />}
             </ItemContainer>
             <LineSeparator />
             <ItemContainer>
                 <Icon>
                     <FontAwesomeIcon icon={faCalendarAlt} />
                 </Icon>
-                <Name>Return Date</Name>
+                <Name onClick={toggleReturnDateCalendar}>Return Date</Name>
                 <SmallIcon>
-                    <FontAwesomeIcon icon={faCaretDown} />
+                    <FontAwesomeIcon icon={isReturnCalendarOpen ? faCaretUp : faCaretDown} />
                 </SmallIcon>
+                {isReturnCalendarOpen && <DateCalendar offset value={returnDate} onChange={setReturnDate as any} />}
             </ItemContainer>
             <Marginer direction='horizontal' margin='2em' />
             <Button text='Book your Car' />
