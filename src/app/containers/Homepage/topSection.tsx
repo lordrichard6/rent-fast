@@ -5,6 +5,7 @@ import tw from 'twin.macro'
 import BlobImg from '../../../assets/images/blob.svg'
 import AudiImg from '../../../assets/images/rs6.webp'
 import { SCREENS } from '../../components/responsive'
+import { Button } from '../../components/button'
 
 const TopSectionContainer = styled.div`
     min-height: 400px;
@@ -140,6 +141,14 @@ const StandaloneCar = styled.div`
     }
 `
 
+const ButtonContainer = styled.div`
+    ${tw`
+        flex
+        flex-wrap
+        mt-4
+    `}
+`
+
 export function TopSection() {
     return (
         <TopSectionContainer>
@@ -150,6 +159,10 @@ export function TopSection() {
                     cover, we have the best available now.
                     We are the Nr.1 car rental in Europe, best prices, best cars, best service.
                 </Description>
+                <ButtonContainer>
+                    <Button text='Book you car' />
+                    <Button theme='filled' text='Sell your car' />
+                </ButtonContainer>
             </LeftContainer>
             <RightContainer>
                 <BlobContainer>
