@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import tw from 'twin.macro'
 import { useMediaQuery } from 'react-responsive'
@@ -43,9 +43,9 @@ const CarsContainer = styled.div`
     `}
 `
 
-const EmptyCars = styled.div``
+// const EmptyCars = styled.div``
 
-const LoadingContainer = styled.div``
+// const LoadingContainer = styled.div``
 
 export function TopCars() {
     const [current, setCurrent] = useState(0)

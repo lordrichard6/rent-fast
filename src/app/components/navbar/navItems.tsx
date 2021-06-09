@@ -4,7 +4,7 @@ import tw from 'twin.macro'
 import { slide as Menu } from 'react-burger-menu'
 import { useMediaQuery } from 'react-responsive'
 import { SCREENS } from '../responsive'
-import { idText } from 'typescript'
+// import { idText } from 'typescript'
 import menuStyles from './menuStyles'
 
 const ListContainer = styled.ul`

@@ -42,3 +42,35 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Dependencies
+
+### `Tailwindcss`
+### `Styled-components`
+### `twin`
+
+I for this project i use a hybrid [Tailwindcss](https://tailwindcss.com/) mixed with [Styled-components](https://styled-components.com/) using [twin](https://www.npmjs.com/package/twin.macro) which blends tailwind with styled-components beautyfully.
+
+
+### `React responsive`
+
+I opted for [react-responsive](https://tailwindcss.com/) to use media queries in a simple manner.
+
+
+### `React-burger-menu`
+
+I used [react-burger-menu](https://www.npmjs.com/package/react-burger-menu) ready to use burger menu for mobile version.
+
+
+### `React-calendar`
+
+A ready to use [react-calendar](https://www.npmjs.com/package/react-calendar) for bookings.
+
+
+### `React-carousel`
+
+A nicely put [@brainhubeu/react-carousel](https://www.npmjs.com/package/@brainhubeu/react-carousel) to display just a small amount of elements on the screen at once.
+
+### `Font Awesome`
+
+I use the icons from [Font Awesome](https://fontawesome.com/) for it's simplicity.
