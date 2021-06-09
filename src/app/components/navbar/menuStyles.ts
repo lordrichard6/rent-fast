@@ -1,4 +1,4 @@
-export default {
+const menuStyles = {
     bmBurgerButton: {
       position: "absolute",
       width: "20px",
@@ -45,3 +45,5 @@ export default {
       background: "rgba(0, 0, 0, 0.3)",
     },
   };
+
+  export default menuStyles
